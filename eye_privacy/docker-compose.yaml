@@ -1,0 +1,67 @@
+version: "3"
+services:
+  eye-app:
+    build: ./app
+    image: eyeappimg
+    container_name: eye_app
+    restart: always
+    ports:
+      - "80:80"
+    working_dir: /code/app
+    command: uvicorn main:app --reload --host 0.0.0.0 --port 80
+    depends_on:
+      - intserver-a
+  intserver-a:
+    build: ./api
+    image: intserverimg
+    container_name: server_a
+    restart: always
+    ports:
+      - "81:81"
+    working_dir: /code/api
+    command: uvicorn api:api --reload --host 0.0.0.0 --port 81
+  intserver-b:
+    build: ./api
+    image: intserverimg
+    container_name: server_b
+    restart: always
+    ports:
+      - "82:82"
+    working_dir: /code/api
+    command: uvicorn api:api --reload --host 0.0.0.0 --port 82
+  intserver-c:
+    build: ./api
+    image: intserverimg
+    container_name: server_c
+    restart: always
+    ports:
+      - "83:83"
+    working_dir: /code/api
+    command: uvicorn api:api --reload --host 0.0.0.0 --port 83
+  intserver-d:
+    build: ./api
+    image: intserverimg
+    container_name: server_d
+    restart: always
+    ports:
+      - "84:84"
+    working_dir: /code/api
+    command: uvicorn api:api --reload --host 0.0.0.0 --port 84
+  eye-model:
+    build: ./model
+    image: eyemodelimg
+    container_name: model_server
+    restart: always
+    ports:
+      - "85:85"
+    working_dir: /code/model
+    command: uvicorn predict:api --reload --host 0.0.0.0 --port 85
+  replay-adversary:
+    build: ./replay_attacker
+    image: replayadversaryimg
+    container_name: replay_adversary
+    restart: always
+    ports:
+      - "90:90"
+    working_dir: /code/replay_attacker
+    command: uvicorn replay:api --reload --host 0.0.0.0 --port 90
