@@ -9,7 +9,7 @@ To simulate -
 docker-compose build
 docker-compose up
 ```
-To retrieve images in the model server container -
+To retrieve images in the model server container (update path) -
 ```python
 sh copy_images.sh
 ```
