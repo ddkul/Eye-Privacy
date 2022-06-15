@@ -1,0 +1,17 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  A method for preserving the privacy of eye images
+  used for emotion detection.
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Divya
+    name-particle: D
+    family-names: Kulkarni
+  - given-names: Sougata
+    family-names: Sen
